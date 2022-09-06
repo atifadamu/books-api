@@ -1,15 +1,16 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const router=require("./routes/booksRoute")
+const router = require("./routes/booksRoute");
+const logger = require("express");
+const books = require("./books");
 
 dotenv.config();
 const app = express();
+
 // middlewares
 app.use(logger);
 
 app.use(express.json());
-
-
 
 //route
 
@@ -22,9 +23,6 @@ app.get("/", (req, res) => {
 app.get("/books", (req, res) => {
   res.json(books);
 });
-
-
-
 
 const PORT = process.env.PORT || 5000;
 
